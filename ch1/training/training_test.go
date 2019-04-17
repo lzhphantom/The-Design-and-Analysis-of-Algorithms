@@ -64,3 +64,25 @@ func TestEuclidExtend(t *testing.T) {
 
 	}
 }
+
+func TestWithLockDoor(t *testing.T) {
+	var tests = []struct {
+		n          int
+		wantClosed int
+		wantOpened int
+	}{
+		{5, 3, 2},
+		{123, 112, 11},
+		{234, 219, 15},
+		{2587, 2537, 50},
+		{520, 498, 22},
+	}
+
+	for _, test := range tests {
+		gotClosed, gotOpened := WithLockDoor(test.n)
+		if gotClosed != test.wantClosed || gotOpened != test.wantOpened {
+			t.Errorf("WithLockDoor(%d) => %d,%d,want %d,%d",
+				test.n, gotClosed, gotOpened, test.wantClosed, test.wantOpened)
+		}
+	}
+}
