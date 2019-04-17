@@ -10,6 +10,7 @@ func TestEuclid(t *testing.T) {
 		n    int
 		want int
 	}{
+		{2, 10, 2},
 		{60, 24, 12},
 		{33, 21, 3},
 		{1238, 125, 1},
@@ -17,7 +18,10 @@ func TestEuclid(t *testing.T) {
 		{987654321, 123456789, 9},
 	}
 	for _, test := range tests {
-		got := Euclid(test.m, test.n)
+		got, err := Euclid(test.m, test.n)
+		if err != nil {
+			t.Fatal(err)
+		}
 
 		if got != test.want {
 			t.Errorf("Euclid(%d,%d)=>%d, want %d",
