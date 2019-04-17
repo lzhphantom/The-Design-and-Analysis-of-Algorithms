@@ -86,3 +86,18 @@ func TestWithLockDoor(t *testing.T) {
 		}
 	}
 }
+
+func TestDecimalToBinary(t *testing.T) {
+	var tests = []struct {
+		dec  int
+		want string
+	}{
+		{10, "1010"},
+	}
+	for _, test := range tests {
+		got := DecimalToBinary(test.dec)
+		if got != test.want {
+			t.Errorf("DecimalToBinary(%d) => %s, want %s", test.dec, got, test.want)
+		}
+	}
+}
