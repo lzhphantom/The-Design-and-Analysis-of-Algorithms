@@ -3,7 +3,7 @@ package Euclid
 import "fmt"
 
 func Euclid(m, n int) (int, error) {
-	if m == 0 || n == 0 {
+	if m <= 0 || n <= 0 {
 		return 0, fmt.Errorf("%d doesn't have the greatest common divisor with any natural number", 0)
 	}
 	for n != 0 {
