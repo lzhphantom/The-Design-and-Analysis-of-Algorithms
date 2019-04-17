@@ -18,7 +18,7 @@ func TestSqrtReappear(t *testing.T) {
 	for _, test := range tests {
 		got := SqrtReappear(test.m)
 		if got != test.want {
-			t.Fatalf("SqrtReappear(%d) => %f, want %f", test.m, got, test.want)
+			t.Errorf("SqrtReappear(%d) => %f, want %f", test.m, got, test.want)
 		}
 	}
 }
@@ -36,7 +36,31 @@ func TestRepeatingNumber(t *testing.T) {
 	for _, test := range tests {
 		got := RepeatingNumber(test.arr)
 		if !reflect.DeepEqual(got, test.want) {
-			t.Fatalf("RepeatingNumber(%v) => %v, want %v", test.arr, got, test.want)
+			t.Errorf("RepeatingNumber(%v) => %v, want %v", test.arr, got, test.want)
 		}
+	}
+}
+
+func TestEuclidExtend(t *testing.T) {
+	var tests = []struct {
+		m     int
+		n     int
+		wantx int
+		wanty int
+	}{
+		{60, 24, 1, -2},
+		{80, 24, 1, -3},
+		{70, 44, 17, -27},
+		{50, 34, 15, 22},
+	}
+
+	for _, test := range tests {
+		gotx, goty := EuclidExtend(test.m, test.n)
+
+		if gotx != test.wantx || goty != test.wanty {
+			t.Errorf("EuclidExtend(%d,%d) => %d,%d, want %d,%d",
+				test.m, test.n, gotx, goty, test.wantx, test.wanty)
+		}
+
 	}
 }

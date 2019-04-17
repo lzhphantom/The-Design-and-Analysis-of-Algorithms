@@ -19,7 +19,7 @@ func TestSieve(t *testing.T) {
 		got := Sieve(test.n)
 
 		if !reflect.DeepEqual(got, test.want) {
-			t.Fatalf("Sieve(%d) => %v, want %v", test.n, got, test.want)
+			t.Errorf("Sieve(%d) => %v, want %v", test.n, got, test.want)
 		}
 	}
 }

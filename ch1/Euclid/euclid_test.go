@@ -20,7 +20,7 @@ func TestEuclid(t *testing.T) {
 	for _, test := range tests {
 		got, err := Euclid(test.m, test.n)
 		if err != nil {
-			t.Fatal(err)
+			t.Error(err)
 		}
 
 		if got != test.want {
@@ -48,7 +48,7 @@ func TestGcdSerialInt(t *testing.T) {
 	for _, test := range tests {
 		got, err := GcdSerialInt(test.m, test.n)
 		if err != nil {
-			t.Fatal(err)
+			t.Error(err)
 		}
 		if got != test.want {
 			t.Errorf("GcdSerialInt(%d,%d) => %d, want %d",
