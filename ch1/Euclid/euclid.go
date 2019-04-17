@@ -18,17 +18,17 @@ func GcdSerialInt(m, n int) (int, error) {
 	if m == 0 || n == 0 {
 		return 0, fmt.Errorf("%d doesn't have the greatest common divisor with any natural number", 0)
 	}
-	var t int
+	var min int
 	if m > n {
-		t = n
+		min = n
 	} else {
-		t = m
+		min = m
 	}
-	for t > 0 {
-		if m%t == 0 && n%t == 0 {
+	for min > 0 {
+		if m%min == 0 && n%min == 0 {
 			break
 		}
-		t--
+		min--
 	}
-	return t, nil
+	return min, nil
 }

@@ -2,16 +2,16 @@ package training
 
 //your array must be sorted.
 func RepeatingNumber(arr []int) (result []int) {
-	var bfNum int
+	var beforeNum int
 	for index, num := range arr {
 		if index == 0 {
-			bfNum = num
+			beforeNum = num
 			continue
 		}
-		if num == bfNum && !isContain(result, num) {
+		if num == beforeNum && !isContain(result, num) {
 			result = append(result, num)
 		}
-		bfNum = num
+		beforeNum = num
 	}
 	return
 }
