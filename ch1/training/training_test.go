@@ -101,3 +101,39 @@ func TestDecimalToBinary(t *testing.T) {
 		}
 	}
 }
+
+func TestMinDistance(t *testing.T) {
+	var tests = []struct {
+		arr  []int
+		want int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9}, 1},
+		{[]int{21, 12, 123, 43, 522, 61, 37, 83, 92}, 6},
+		{[]int{221, 12 << 2, 12 << 3, 4 << 3, 52 << 2, 621, 3 << 7, 8 << 3, 9 << 2}, 4},
+	}
+
+	for _, test := range tests {
+		got := MinDistance(test.arr)
+		if got != test.want {
+			t.Errorf("MinDistance(%v) => %v,want %v", test.arr, got, test.want)
+		}
+	}
+}
+
+func TestMinDistanceUp(t *testing.T) {
+	var tests = []struct {
+		arr  []int
+		want int
+	}{
+		{[]int{1, 2, 3, 4, 5, 6, 7, 8, 9}, 1},
+		{[]int{21, 12, 123, 43, 522, 61, 37, 83, 92}, 6},
+		{[]int{221, 12 << 2, 12 << 3, 4 << 3, 52 << 2, 621, 3 << 7, 8 << 3, 9 << 2}, 4},
+	}
+
+	for _, test := range tests {
+		got := MinDistanceUp(test.arr)
+		if got != test.want {
+			t.Errorf("MinDistanceUp(%v) => %v,want %v", test.arr, got, test.want)
+		}
+	}
+}
