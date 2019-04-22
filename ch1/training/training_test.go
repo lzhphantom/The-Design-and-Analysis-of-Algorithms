@@ -137,3 +137,20 @@ func TestMinDistanceUp(t *testing.T) {
 		}
 	}
 }
+
+func TestComparisonCountingSort(t *testing.T) {
+	var tests = []struct {
+		arr  []int
+		want []int
+	}{
+		{[]int{60, 35, 81, 98, 14, 47}, []int{14, 35, 47, 60, 81, 98}},
+	}
+
+	for _, test := range tests {
+		got := ComparisonCountingSort(test.arr)
+
+		if !reflect.DeepEqual(got, test.want) {
+			t.Errorf("ComparisonCountingSort(%v) => %v,want %v", test.arr, got, test.want)
+		}
+	}
+}
