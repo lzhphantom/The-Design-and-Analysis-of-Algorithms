@@ -21,3 +21,20 @@ func StrIsExist(str string, check string) bool {
 	}
 	return false
 }
+
+func StrIsExistUp(str string, check string) bool {
+	if len(str) < len(check) {
+		return false
+	}
+	for index, char := range str {
+		if len(str)+1-index < len(check) {
+			break
+		}
+		if char == rune(check[0]) {
+			if str[index:index+len(check)] == check {
+				return true
+			}
+		}
+	}
+	return false
+}

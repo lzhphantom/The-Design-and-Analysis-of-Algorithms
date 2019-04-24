@@ -175,3 +175,24 @@ func TestStrIsExist(t *testing.T) {
 		}
 	}
 }
+
+func TestStrIsExistUp(t *testing.T) {
+	var tests = []struct {
+		str   string
+		check string
+		want  bool
+	}{
+		{"123", "12", true},
+		{"3359", "39", false},
+		{"12sif", "2f", false},
+		{"1", "12", false},
+		{"good boy", "od", true},
+		{"good boy", "db", false},
+	}
+	for _, test := range tests {
+		got := StrIsExistUp(test.str, test.check)
+		if got != test.want {
+			t.Errorf("StrIsExistUp(%s,%s) => %v,want %v", test.str, test.check, got, test.want)
+		}
+	}
+}
