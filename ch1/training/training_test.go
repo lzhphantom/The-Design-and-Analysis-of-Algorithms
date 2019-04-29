@@ -196,3 +196,27 @@ func TestStrIsExistUp(t *testing.T) {
 		}
 	}
 }
+
+func TestIntersection(t *testing.T) {
+	var tests = []struct {
+		x1, x2, x3, x4 float64
+		y1, y2, y3, y4 float64
+		want           bool
+	}{
+		{1, 1, 1, 1, 1, 1, 1, 1, false},
+		{1, 2, 1, 3, 1, 5, 1, 7, true},
+		{3, 4, 5, 6, 11, 12, 13, 14, false},
+		{13, -21, -1, 12, -1, 20, 10, -21, true},
+		{123, 456, 789, 357, 321, 654, 987, 753, true},
+		{21, 31, 41, 51, 19, 18, 17, 16, false},
+	}
+
+	for _, test := range tests {
+		got := Intersection(test.x1, test.x2, test.x3, test.x4, test.y1, test.y2, test.y3, test.y4)
+
+		if got != test.want {
+			t.Errorf("Intersection(%f,%f,%f,%f,%f,%f,%f,%f) => %v,want %v",
+				test.x1, test.x2, test.x3, test.x4, test.y1, test.y2, test.y3, test.y4, got, test.want)
+		}
+	}
+}
